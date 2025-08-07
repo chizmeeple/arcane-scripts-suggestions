@@ -239,6 +239,25 @@
           font-family: serif;
         }
 
+        div > quote {
+          display: inline;
+          font-style: italic;
+          border-left: 2px solid #c0c0c0;
+          color: #e8e8e8;
+          margin-left: 1rem;
+        }
+
+        div > quote::before {
+          margin-left: 0.5rem;
+          content: '"';
+          color: #ffd700;
+        }
+
+        div > quote::after {
+          content: '"';
+          color: #ffd700;
+        }
+
         footer {
         text-align: center;
         margin-top: 3rem;
@@ -281,9 +300,10 @@
         <h3 style="color: #ffd700; margin-bottom: 1rem">Yaggababble</h3>
         <p>
           The Yaggababble is a Demon with an ability that reads:
+          <div>
           <quote>
             You start knowing a secret phrase. For each time you said it publicly today, a player might die.
-            </quote>
+            </quote></div>
         </p>
       </div>
 
@@ -298,7 +318,7 @@
       </div>
 
       <footer>
-        <p>Created for Blood on the Clocktower storytellers</p>
+        <p>Part of the <a href="https://arcane-scripts.net" target="_blank" rel="noopener noreferrer">Arcane Scripts</a> toolkit</p>
       </footer>
     </div>
 
