@@ -201,12 +201,45 @@
         margin-bottom: 1rem;
       }
 
-      .random-phrase-context {
-        color: #b8b8b8;
-        font-style: italic;
-      }
+              .random-phrase-context {
+          color: #b8b8b8;
+          font-style: italic;
+        }
 
-      footer {
+        quote {
+          display: block;
+          background: rgba(255, 215, 0, 0.1);
+          border-left: 4px solid #ffd700;
+          padding: 1rem;
+          padding-left: 1.75rem;
+          margin: 1rem 0;
+          font-style: italic;
+          color: #e8e8e8;
+          border-radius: 0 8px 8px 0;
+          position: relative;
+        }
+
+        quote::before {
+          content: '"';
+          font-size: 2rem;
+          color: #ffd700;
+          position: absolute;
+          top: 0.5rem;
+          left: 0.5rem;
+          font-family: serif;
+        }
+
+        quote::after {
+          content: '"';
+          font-size: 2rem;
+          color: #ffd700;
+          position: absolute;
+          bottom: 0.5rem;
+          right: 0.5rem;
+          font-family: serif;
+        }
+
+        footer {
         text-align: center;
         margin-top: 3rem;
         padding-top: 2rem;
@@ -254,9 +287,13 @@
         </p>
       </div>
 
-      <div id="randomPhrase" class="random-phrase show">
-        <div class="random-phrase-text" id="randomPhraseText"></div>
+      <div class="random-phrase-text">
+        <quote id="randomPhraseText"></quote>
       </div>
+
+      <button class="random-button" onclick="showRandomPhrase()">
+        🎲 Get Different Phrase
+      </button>
 
       </div>
 
@@ -306,7 +343,7 @@
         const randomIndex = Math.floor(Math.random() * phrases.length);
         const phrase = phrases[randomIndex];
 
-        document.getElementById('randomPhraseText').textContent = '"' + phrase.text + '"';
+        document.getElementById('randomPhraseText').textContent = phrase.text;
       }
 
       // Show random phrase when page loads
