@@ -354,6 +354,9 @@
     <script>
       const phrases = [
         {
+          text: 'Too confident',
+        },
+        {
           text: 'Can we talk tomorrow?',
         },
         {
@@ -403,7 +406,8 @@
 
       function showAllPhrases() {
         const phrasesGrid = document.getElementById('allPhrases');
-        phrases.forEach(phrase => {
+        const sortedPhrases = [...phrases].sort((a, b) => a.text.localeCompare(b.text));
+        sortedPhrases.forEach(phrase => {
           const phraseDiv = document.createElement('div');
           phraseDiv.className = 'phrase-item';
           phraseDiv.textContent = phrase.text;
