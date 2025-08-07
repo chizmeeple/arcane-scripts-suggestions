@@ -308,6 +308,24 @@
           background: rgba(255, 215, 0, 0.2);
         }
 
+        .wiki-button {
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          color: #e8e8e8;
+          padding: 0.5rem 1rem;
+          border-radius: 4px;
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+          display: inline-block;
+        }
+
+        .wiki-button:hover {
+          background: rgba(255, 255, 255, 0.2);
+          border-color: rgba(255, 215, 0, 0.3);
+          color: #ffd700;
+        }
+
         footer {
         text-align: center;
         margin-top: 3rem;
@@ -346,16 +364,21 @@
         <p class="subtitle">Storyteller Phrases & Suggestions</p>
       </header>
 
-      <div class="character-info">
-        <h3 style="color: #ffd700; margin-bottom: 1rem">Yaggababble</h3>
-        <p>
-          The Yaggababble is a Demon with an ability that reads:
-          <div>
-          <quote>
-            You start knowing a secret phrase. For each time you said it publicly today, a player might die.
+              <div class="character-info">
+          <h3 style="color: #ffd700; margin-bottom: 1rem">Yaggababble</h3>
+          <p>
+            The Yaggababble is a Demon with an ability that reads:
+            <div>
+            <quote>
+              You start knowing a secret phrase. For each time you said it publicly today, a player might die.
             </quote></div>
-        </p>
-      </div>
+          </p>
+          <div style="margin-top: 1rem; text-align: right;">
+            <a href="#" id="wikiLink" target="_blank" rel="noopener noreferrer" class="wiki-button">
+              📖 View on Wiki
+            </a>
+          </div>
+        </div>
 
       <div class="random-phrase-text">
         <quote id="randomPhraseText"></quote>
@@ -383,6 +406,7 @@
     </div>
 
     <script>
+      const wikiLink = 'https://wiki.bloodontheclocktower.com/Yaggababble';
       const phrases = [
         {
           text: 'Too confident',
@@ -434,6 +458,7 @@
         showRandomPhrase();
         showAllPhrases();
         loadPhrasesVisibility();
+        setWikiLink();
       });
 
       function showAllPhrases() {
@@ -478,6 +503,11 @@
           phrasesGrid.style.display = 'none';
           toggleButton.textContent = 'Show All Phrases';
         }
+      }
+
+      function setWikiLink() {
+        const wikiLinkElement = document.getElementById('wikiLink');
+        wikiLinkElement.href = wikiLink;
       }
 
       function copyPhrase(element) {
