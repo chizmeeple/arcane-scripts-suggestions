@@ -247,10 +247,10 @@
       <div class="character-info">
         <h3 style="color: #ffd700; margin-bottom: 1rem">About Yaggababble</h3>
         <p>
-          The Yaggababble is a Townsfolk character who receives information
-          about evil players each night. They learn either the number of evil
-          players or the number of evil players who voted for the same player as
-          them.
+          The Yaggababble is a Demon with an ability that reads:
+          <quote>
+            You start knowing a secret phrase. For each time you said it publicly today, a player might die.
+            </quote>
         </p>
       </div>
 
@@ -260,100 +260,8 @@
 
       <div id="randomPhrase" class="random-phrase">
         <div class="random-phrase-text" id="randomPhraseText"></div>
-        <div class="random-phrase-context" id="randomPhraseContext"></div>
       </div>
 
-      <div class="phrase-section">
-        <h2 class="section-title">Night Phase Phrases</h2>
-
-        <div class="phrase-card" onclick="copyPhrase(this)">
-          <div class="phrase-text">
-            "You wake up and see [number] evil players in the game."
-          </div>
-          <div class="phrase-context">
-            When revealing the number of evil players
-          </div>
-          <button class="copy-button">Copy</button>
-        </div>
-
-        <div class="phrase-card" onclick="copyPhrase(this)">
-          <div class="phrase-text">
-            "You learn that [number] evil players voted for the same player as
-            you today."
-          </div>
-          <div class="phrase-context">When revealing voting information</div>
-          <button class="copy-button">Copy</button>
-        </div>
-
-        <div class="phrase-card" onclick="copyPhrase(this)">
-          <div class="phrase-text">
-            "Your ability reveals that there are [number] evil players in the
-            game."
-          </div>
-          <div class="phrase-context">
-            Alternative phrasing for number of evil players
-          </div>
-          <button class="copy-button">Copy</button>
-        </div>
-      </div>
-
-      <div class="phrase-section">
-        <h2 class="section-title">Clarification Phrases</h2>
-
-        <div class="phrase-card" onclick="copyPhrase(this)">
-          <div class="phrase-text">
-            "This information is current as of tonight."
-          </div>
-          <div class="phrase-context">
-            When they ask about timing of information
-          </div>
-          <button class="copy-button">Copy</button>
-        </div>
-
-        <div class="phrase-card" onclick="copyPhrase(this)">
-          <div class="phrase-text">
-            "You don't know which specific players are evil, only the count."
-          </div>
-          <div class="phrase-context">
-            When they ask for specific player names
-          </div>
-          <button class="copy-button">Copy</button>
-        </div>
-
-        <div class="phrase-card" onclick="copyPhrase(this)">
-          <div class="phrase-text">
-            "The voting information refers to today's vote, not previous days."
-          </div>
-          <div class="phrase-context">When clarifying voting timing</div>
-          <button class="copy-button">Copy</button>
-        </div>
-      </div>
-
-      <div class="phrase-section">
-        <h2 class="section-title">General Tips</h2>
-
-        <div class="phrase-card">
-          <div class="phrase-text">
-            • Always be consistent with the information you provide
-          </div>
-          <div class="phrase-context">Core principle</div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-text">
-            • If they ask about previous nights, remind them they only get
-            current information
-          </div>
-          <div class="phrase-context">Timing clarification</div>
-        </div>
-
-        <div class="phrase-card">
-          <div class="phrase-text">
-            • Be prepared for them to ask about the voting information
-            frequently
-          </div>
-          <div class="phrase-context">Common player behaviour</div>
-        </div>
       </div>
 
       <footer>
@@ -364,28 +272,37 @@
     <script>
       const phrases = [
         {
-          text: 'You wake up and see [number] evil players in the game.',
-          context: 'When revealing the number of evil players',
+          text: 'Can we talk tomorrow?',
         },
         {
-          text: 'You learn that [number] evil players voted for the same player as you today.',
-          context: 'When revealing voting information',
+          text: 'Fill your boots',
         },
         {
-          text: 'Your ability reveals that there are [number] evil players in the game.',
-          context: 'Alternative phrasing for number of evil players',
+          text: "I don't think that's true",
         },
         {
-          text: 'This information is current as of tonight.',
-          context: 'When they ask about timing of information',
+          text: "I don't understand",
         },
         {
-          text: "You don't know which specific players are evil, only the count.",
-          context: 'When they ask for specific player names',
+          text: 'I saw you as Good',
         },
         {
-          text: "The voting information refers to today's vote, not previous days.",
-          context: 'When clarifying voting timing',
+          text: "I think that's the false one",
+        },
+        {
+          text: 'I would never Starpass',
+        },
+        {
+          text: "I've got a one",
+        },
+        {
+          text: "That's obviously evil",
+        },
+        {
+          text: 'They might be droisoned',
+        },
+        {
+          text: 'Well we know that',
         },
       ];
 
@@ -393,12 +310,10 @@
         const randomIndex = Math.floor(Math.random() * phrases.length);
         const phrase = phrases[randomIndex];
 
-        document.getElementById('randomPhraseText').textContent = phrase.text;
-        document.getElementById('randomPhraseContext').textContent =
-          phrase.context;
+        document.getElementById('randomPhraseText').textContent = '"' + phrase.text + '"';
 
         const randomPhraseDiv = document.getElementById('randomPhrase');
-        randomPhraseDiv.classList.remove('show');
+        //randomPhraseDiv.classList.remove('show');
         setTimeout(() => {
           randomPhraseDiv.classList.add('show');
         }, 10);
