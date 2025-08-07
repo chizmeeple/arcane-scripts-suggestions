@@ -466,6 +466,42 @@
         {
           text: 'Well we know that',
         },
+        {
+          text: "I completely agree",
+        },
+        {
+          text: "I completely disagree",
+        },
+        {
+          text: "I hard claimed it",
+        },
+        {
+          text: "Is that a double claim?",
+        },
+        {
+          text: "Is that the Yaggababble phrase?",
+        },
+        {
+          text: "Witch check",
+        },
+        {
+          text: "I'm not sure",
+        },
+        {
+          text: "Too many hands",
+        },
+        {
+          text: "According to [name]",
+        },
+        {
+          text: "I'm not sure",
+        },
+        {
+          text: "I'm not Evil",
+        },
+        {
+          text: "I'm the Demon",
+        },
       ];
 
       function showRandomPhrase() {
@@ -485,7 +521,9 @@
 
       function showAllPhrases() {
         const phrasesGrid = document.getElementById('allPhrases');
-        const sortedPhrases = [...phrases].sort((a, b) => a.text.localeCompare(b.text));
+        const sortedPhrases = [...phrases]
+          .filter(phrase => phrase.text) // Only include phrases with text property
+          .sort((a, b) => a.text.localeCompare(b.text));
         sortedPhrases.forEach(phrase => {
           const phraseDiv = document.createElement('div');
           phraseDiv.className = 'phrase-item';
