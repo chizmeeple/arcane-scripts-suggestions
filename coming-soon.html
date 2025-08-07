@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coming Soon - Storyteller Phrases</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #1a1a2e 0%,
+          #16213e 50%,
+          #0f3460 100%
+        );
+        color: #e8e8e8;
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .nav-bar {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+      }
+
+      .nav-content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-link {
+        color: #ffd700;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #fff;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #ffd700;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: #b8b8b8;
+        margin-bottom: 2rem;
+      }
+
+      .coming-soon-content {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 3rem;
+        margin-bottom: 2rem;
+        backdrop-filter: blur(10px);
+        text-align: center;
+      }
+
+      .coming-soon-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        color: #ffd700;
+      }
+
+      .coming-soon-text {
+        font-size: 1.3rem;
+        color: #e8e8e8;
+        margin-bottom: 1rem;
+      }
+
+      .coming-soon-description {
+        color: #b8b8b8;
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      .back-button {
+        background: linear-gradient(45deg, #ffd700, #ffed4e);
+        color: #1a1a2e;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 2rem;
+      }
+
+      .back-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 1rem;
+        }
+
+        .nav-content {
+          padding: 0 1rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .coming-soon-content {
+          padding: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <div class="nav-content">
+        <a href="/" class="nav-link">← Back to Characters</a>
+        <span style="color: #ffd700; font-weight: bold">Coming Soon</span>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header>
+        <h1>Coming Soon</h1>
+        <p class="subtitle">More character pages are in development</p>
+      </header>
+
+      <div class="coming-soon-content">
+        <div class="coming-soon-icon">🚧</div>
+        <div class="coming-soon-text">
+          This character page is under construction
+        </div>
+        <div class="coming-soon-description">
+          We're working hard to add more helpful phrases and suggestions for
+          additional Blood on the Clocktower characters. Check back soon!
+        </div>
+        <a href="/" class="back-button">← Back to Characters</a>
+      </div>
+
+      <footer>
+        <p>
+          Part of the
+          <a
+            href="https://arcane-scripts.net"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Arcane Scripts</a
+          >
+          toolkit
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
