@@ -282,6 +282,32 @@
           transform: translateY(-2px);
         }
 
+        .phrases-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin: 2rem 0 1rem 0;
+        }
+
+        .phrases-header h3 {
+          margin: 0;
+        }
+
+        .toggle-button {
+          background: rgba(255, 215, 0, 0.1);
+          border: 1px solid rgba(255, 215, 0, 0.3);
+          color: #ffd700;
+          padding: 0.5rem 1rem;
+          border-radius: 4px;
+          cursor: pointer;
+          font-size: 0.9rem;
+          transition: all 0.3s ease;
+        }
+
+        .toggle-button:hover {
+          background: rgba(255, 215, 0, 0.2);
+        }
+
         footer {
         text-align: center;
         margin-top: 3rem;
@@ -340,8 +366,13 @@
        </button>
 
        <div class="all-phrases-section">
-         <h3 style="color: #ffd700; margin: 2rem 0 1rem 0">All Possible Phrases</h3>
-         <div class="phrases-grid" id="allPhrases"></div>
+         <div class="phrases-header">
+           <h3 style="color: #ffd700; margin: 2rem 0 1rem 0">All Possible Phrases</h3>
+           <button class="toggle-button" onclick="togglePhrases()" id="toggleButton">
+             Show All Phrases
+           </button>
+         </div>
+         <div class="phrases-grid" id="allPhrases" style="display: none;"></div>
        </div>
 
        </div>
@@ -402,6 +433,7 @@
       document.addEventListener('DOMContentLoaded', function() {
         showRandomPhrase();
         showAllPhrases();
+        loadPhrasesVisibility();
       });
 
       function showAllPhrases() {
@@ -416,6 +448,36 @@
           };
           phrasesGrid.appendChild(phraseDiv);
         });
+      }
+
+      function togglePhrases() {
+        const phrasesGrid = document.getElementById('allPhrases');
+        const toggleButton = document.getElementById('toggleButton');
+        const isVisible = phrasesGrid.style.display !== 'none';
+
+        if (isVisible) {
+          phrasesGrid.style.display = 'none';
+          toggleButton.textContent = 'Show All Phrases';
+          localStorage.setItem('phrasesVisible', 'false');
+        } else {
+          phrasesGrid.style.display = 'grid';
+          toggleButton.textContent = 'Hide All Phrases';
+          localStorage.setItem('phrasesVisible', 'true');
+        }
+      }
+
+      function loadPhrasesVisibility() {
+        const phrasesGrid = document.getElementById('allPhrases');
+        const toggleButton = document.getElementById('toggleButton');
+        const savedVisibility = localStorage.getItem('phrasesVisible');
+
+        if (savedVisibility === 'true') {
+          phrasesGrid.style.display = 'grid';
+          toggleButton.textContent = 'Hide All Phrases';
+        } else {
+          phrasesGrid.style.display = 'none';
+          toggleButton.textContent = 'Show All Phrases';
+        }
       }
 
       function copyPhrase(element) {
