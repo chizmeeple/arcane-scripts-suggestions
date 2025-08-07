@@ -245,7 +245,7 @@
       </header>
 
       <div class="character-info">
-        <h3 style="color: #ffd700; margin-bottom: 1rem">About Yaggababble</h3>
+        <h3 style="color: #ffd700; margin-bottom: 1rem">Yaggababble</h3>
         <p>
           The Yaggababble is a Demon with an ability that reads:
           <quote>
@@ -254,11 +254,7 @@
         </p>
       </div>
 
-      <button class="random-button" onclick="showRandomPhrase()">
-        🎲 Get Random Phrase
-      </button>
-
-      <div id="randomPhrase" class="random-phrase">
+      <div id="randomPhrase" class="random-phrase show">
         <div class="random-phrase-text" id="randomPhraseText"></div>
       </div>
 
@@ -311,13 +307,10 @@
         const phrase = phrases[randomIndex];
 
         document.getElementById('randomPhraseText').textContent = '"' + phrase.text + '"';
-
-        const randomPhraseDiv = document.getElementById('randomPhrase');
-        //randomPhraseDiv.classList.remove('show');
-        setTimeout(() => {
-          randomPhraseDiv.classList.add('show');
-        }, 10);
       }
+
+      // Show random phrase when page loads
+      document.addEventListener('DOMContentLoaded', showRandomPhrase);
 
       function copyPhrase(element) {
         const phraseText = element.querySelector('.phrase-text').textContent;
