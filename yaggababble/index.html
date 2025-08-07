@@ -258,6 +258,30 @@
           color: #ffd700;
         }
 
+        .phrases-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 1rem;
+          margin-top: 1rem;
+        }
+
+        .phrase-item {
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          border-radius: 8px;
+          padding: 1rem;
+          font-style: italic;
+          color: #e8e8e8;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .phrase-item:hover {
+          background: rgba(255, 255, 255, 0.06);
+          border-color: rgba(255, 215, 0, 0.2);
+          transform: translateY(-2px);
+        }
+
         footer {
         text-align: center;
         margin-top: 3rem;
@@ -311,11 +335,16 @@
         <quote id="randomPhraseText"></quote>
       </div>
 
-      <button class="random-button" onclick="showRandomPhrase()">
-        🎲 Get Different Phrase
-      </button>
+             <button class="random-button" onclick="showRandomPhrase()">
+         🎲 Get Different Phrase
+       </button>
 
-      </div>
+       <div class="all-phrases-section">
+         <h3 style="color: #ffd700; margin: 2rem 0 1rem 0">All Possible Phrases</h3>
+         <div class="phrases-grid" id="allPhrases"></div>
+       </div>
+
+       </div>
 
       <footer>
         <p>Part of the <a href="https://arcane-scripts.net" target="_blank" rel="noopener noreferrer">Arcane Scripts</a> toolkit</p>
@@ -367,7 +396,23 @@
       }
 
       // Show random phrase when page loads
-      document.addEventListener('DOMContentLoaded', showRandomPhrase);
+      document.addEventListener('DOMContentLoaded', function() {
+        showRandomPhrase();
+        showAllPhrases();
+      });
+
+      function showAllPhrases() {
+        const phrasesGrid = document.getElementById('allPhrases');
+        phrases.forEach(phrase => {
+          const phraseDiv = document.createElement('div');
+          phraseDiv.className = 'phrase-item';
+          phraseDiv.textContent = phrase.text;
+          phraseDiv.onclick = () => {
+            document.getElementById('randomPhraseText').textContent = phrase.text;
+          };
+          phrasesGrid.appendChild(phraseDiv);
+        });
+      }
 
       function copyPhrase(element) {
         const phraseText = element.querySelector('.phrase-text').textContent;
