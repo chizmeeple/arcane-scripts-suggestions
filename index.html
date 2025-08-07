@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blood on the Clocktower - Storyteller Phrases</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #1a1a2e 0%,
+          #16213e 50%,
+          #0f3460 100%
+        );
+        color: #e8e8e8;
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #ffd700;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: #b8b8b8;
+        margin-bottom: 2rem;
+      }
+
+      .character-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .character-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-decoration: none;
+        color: inherit;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .character-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 215, 0, 0.3);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .character-name {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ffd700;
+        margin-bottom: 0.5rem;
+      }
+
+      .character-description {
+        color: #b8b8b8;
+        font-size: 0.9rem;
+      }
+
+      .status {
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        display: inline-block;
+      }
+
+      .status.available {
+        background: rgba(76, 175, 80, 0.2);
+        color: #4caf50;
+        border: 1px solid rgba(76, 175, 80, 0.3);
+      }
+
+      .status.coming-soon {
+        background: rgba(255, 152, 0, 0.2);
+        color: #ff9800;
+        border: 1px solid rgba(255, 152, 0, 0.3);
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 1rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .character-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Blood on the Clocktower</h1>
+        <p class="subtitle">Storyteller Phrases & Suggestions</p>
+      </header>
+
+      <div class="character-grid">
+        <a href="/yaggababble" class="character-card">
+          <div class="character-name">Yaggababble</div>
+          <div class="character-description">
+            Helpful phrases and suggestions for running the Yaggababble
+            character.
+          </div>
+          <div class="status available">Available</div>
+        </a>
+
+        <a href="/savant" class="character-card">
+          <div class="character-name">Savant</div>
+          <div class="character-description">
+            Phrases and guidance for the Savant's complex information gathering.
+          </div>
+          <div class="status coming-soon">Coming Soon</div>
+        </a>
+
+        <a href="/amnesiac" class="character-card">
+          <div class="character-name">Amnesiac</div>
+          <div class="character-description">
+            Suggestions for running the mysterious Amnesiac character.
+          </div>
+          <div class="status coming-soon">Coming Soon</div>
+        </a>
+
+        <a href="/wizard" class="character-card">
+          <div class="character-name">Wizard</div>
+          <div class="character-description">
+            Phrases and tips for the Wizard's magical abilities.
+          </div>
+          <div class="status coming-soon">Coming Soon</div>
+        </a>
+      </div>
+
+      <footer>
+        <p>Created for Blood on the Clocktower storytellers</p>
+      </footer>
+    </div>
+  </body>
+</html>

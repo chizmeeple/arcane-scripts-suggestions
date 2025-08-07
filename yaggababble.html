@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yaggababble - Storyteller Phrases</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          135deg,
+          #1a1a2e 0%,
+          #16213e 50%,
+          #0f3460 100%
+        );
+        color: #e8e8e8;
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .nav-bar {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+      }
+
+      .nav-content {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .nav-link {
+        color: #ffd700;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #fff;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #ffd700;
+        text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: #b8b8b8;
+        margin-bottom: 2rem;
+      }
+
+      .character-info {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        backdrop-filter: blur(10px);
+      }
+
+      .phrase-section {
+        margin-bottom: 2rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+        color: #ffd700;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        padding-bottom: 0.5rem;
+      }
+
+      .phrase-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        padding: 1rem;
+        margin-bottom: 1rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .phrase-card:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 215, 0, 0.2);
+        transform: translateX(5px);
+      }
+
+      .phrase-text {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: #e8e8e8;
+      }
+
+      .phrase-context {
+        font-size: 0.9rem;
+        color: #b8b8b8;
+        font-style: italic;
+      }
+
+      .copy-button {
+        background: rgba(255, 215, 0, 0.1);
+        border: 1px solid rgba(255, 215, 0, 0.3);
+        color: #ffd700;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: all 0.3s ease;
+        margin-top: 0.5rem;
+      }
+
+      .copy-button:hover {
+        background: rgba(255, 215, 0, 0.2);
+      }
+
+      .copy-button.copied {
+        background: rgba(76, 175, 80, 0.2);
+        border-color: rgba(76, 175, 80, 0.3);
+        color: #4caf50;
+      }
+
+      .random-button {
+        background: linear-gradient(45deg, #ffd700, #ffed4e);
+        color: #1a1a2e;
+        border: none;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+        display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .random-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+      }
+
+      .random-phrase {
+        background: rgba(255, 215, 0, 0.1);
+        border: 2px solid rgba(255, 215, 0, 0.3);
+        border-radius: 12px;
+        padding: 2rem;
+        margin: 2rem 0;
+        text-align: center;
+        display: none;
+      }
+
+      .random-phrase.show {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .random-phrase-text {
+        font-size: 1.3rem;
+        color: #ffd700;
+        margin-bottom: 1rem;
+      }
+
+      .random-phrase-context {
+        color: #b8b8b8;
+        font-style: italic;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #888;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 1rem;
+        }
+
+        .nav-content {
+          padding: 0 1rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <div class="nav-content">
+        <a href="/" class="nav-link">← Back to Characters</a>
+        <span style="color: #ffd700; font-weight: bold">Yaggababble</span>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header>
+        <h1>Yaggababble</h1>
+        <p class="subtitle">Storyteller Phrases & Suggestions</p>
+      </header>
+
+      <div class="character-info">
+        <h3 style="color: #ffd700; margin-bottom: 1rem">About Yaggababble</h3>
+        <p>
+          The Yaggababble is a Townsfolk character who receives information
+          about evil players each night. They learn either the number of evil
+          players or the number of evil players who voted for the same player as
+          them.
+        </p>
+      </div>
+
+      <button class="random-button" onclick="showRandomPhrase()">
+        🎲 Get Random Phrase
+      </button>
+
+      <div id="randomPhrase" class="random-phrase">
+        <div class="random-phrase-text" id="randomPhraseText"></div>
+        <div class="random-phrase-context" id="randomPhraseContext"></div>
+      </div>
+
+      <div class="phrase-section">
+        <h2 class="section-title">Night Phase Phrases</h2>
+
+        <div class="phrase-card" onclick="copyPhrase(this)">
+          <div class="phrase-text">
+            "You wake up and see [number] evil players in the game."
+          </div>
+          <div class="phrase-context">
+            When revealing the number of evil players
+          </div>
+          <button class="copy-button">Copy</button>
+        </div>
+
+        <div class="phrase-card" onclick="copyPhrase(this)">
+          <div class="phrase-text">
+            "You learn that [number] evil players voted for the same player as
+            you today."
+          </div>
+          <div class="phrase-context">When revealing voting information</div>
+          <button class="copy-button">Copy</button>
+        </div>
+
+        <div class="phrase-card" onclick="copyPhrase(this)">
+          <div class="phrase-text">
+            "Your ability reveals that there are [number] evil players in the
+            game."
+          </div>
+          <div class="phrase-context">
+            Alternative phrasing for number of evil players
+          </div>
+          <button class="copy-button">Copy</button>
+        </div>
+      </div>
+
+      <div class="phrase-section">
+        <h2 class="section-title">Clarification Phrases</h2>
+
+        <div class="phrase-card" onclick="copyPhrase(this)">
+          <div class="phrase-text">
+            "This information is current as of tonight."
+          </div>
+          <div class="phrase-context">
+            When they ask about timing of information
+          </div>
+          <button class="copy-button">Copy</button>
+        </div>
+
+        <div class="phrase-card" onclick="copyPhrase(this)">
+          <div class="phrase-text">
+            "You don't know which specific players are evil, only the count."
+          </div>
+          <div class="phrase-context">
+            When they ask for specific player names
+          </div>
+          <button class="copy-button">Copy</button>
+        </div>
+
+        <div class="phrase-card" onclick="copyPhrase(this)">
+          <div class="phrase-text">
+            "The voting information refers to today's vote, not previous days."
+          </div>
+          <div class="phrase-context">When clarifying voting timing</div>
+          <button class="copy-button">Copy</button>
+        </div>
+      </div>
+
+      <div class="phrase-section">
+        <h2 class="section-title">General Tips</h2>
+
+        <div class="phrase-card">
+          <div class="phrase-text">
+            • Always be consistent with the information you provide
+          </div>
+          <div class="phrase-context">Core principle</div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-text">
+            • If they ask about previous nights, remind them they only get
+            current information
+          </div>
+          <div class="phrase-context">Timing clarification</div>
+        </div>
+
+        <div class="phrase-card">
+          <div class="phrase-text">
+            • Be prepared for them to ask about the voting information
+            frequently
+          </div>
+          <div class="phrase-context">Common player behaviour</div>
+        </div>
+      </div>
+
+      <footer>
+        <p>Created for Blood on the Clocktower storytellers</p>
+      </footer>
+    </div>
+
+    <script>
+      const phrases = [
+        {
+          text: 'You wake up and see [number] evil players in the game.',
+          context: 'When revealing the number of evil players',
+        },
+        {
+          text: 'You learn that [number] evil players voted for the same player as you today.',
+          context: 'When revealing voting information',
+        },
+        {
+          text: 'Your ability reveals that there are [number] evil players in the game.',
+          context: 'Alternative phrasing for number of evil players',
+        },
+        {
+          text: 'This information is current as of tonight.',
+          context: 'When they ask about timing of information',
+        },
+        {
+          text: "You don't know which specific players are evil, only the count.",
+          context: 'When they ask for specific player names',
+        },
+        {
+          text: "The voting information refers to today's vote, not previous days.",
+          context: 'When clarifying voting timing',
+        },
+      ];
+
+      function showRandomPhrase() {
+        const randomIndex = Math.floor(Math.random() * phrases.length);
+        const phrase = phrases[randomIndex];
+
+        document.getElementById('randomPhraseText').textContent = phrase.text;
+        document.getElementById('randomPhraseContext').textContent =
+          phrase.context;
+
+        const randomPhraseDiv = document.getElementById('randomPhrase');
+        randomPhraseDiv.classList.remove('show');
+        setTimeout(() => {
+          randomPhraseDiv.classList.add('show');
+        }, 10);
+      }
+
+      function copyPhrase(element) {
+        const phraseText = element.querySelector('.phrase-text').textContent;
+        const button = element.querySelector('.copy-button');
+
+        navigator.clipboard
+          .writeText(phraseText)
+          .then(() => {
+            button.textContent = 'Copied!';
+            button.classList.add('copied');
+
+            setTimeout(() => {
+              button.textContent = 'Copy';
+              button.classList.remove('copied');
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error('Failed to copy: ', err);
+            button.textContent = 'Failed';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          });
+      }
+    </script>
+  </body>
+</html>
