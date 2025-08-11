@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amnesiac - Storyteller Phrases</title>
+    <link rel="stylesheet" href="/styles.css">
+
+  </head>
+  <body>
+    <nav class="nav-bar">
+      <div class="nav-content">
+        <a href="/" class="nav-link">← Back to Characters</a>
+        <span style="color: #ffd700; font-weight: bold">Amnesiac</span>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header>
+        <h1>Amnesiac</h1>
+        <p class="subtitle">Storyteller Phrases & Suggestions</p>
+      </header>
+
+              <div class="character-info">
+          <h3 style="color: #ffd700; margin-bottom: 1rem">Amnesiac</h3>
+          <p>
+            The Amnesiac is a Townsfolk with an ability that reads:
+            <div>
+            <quote>
+              You do not know what your ability is. Each day, privately guess
+              what it is: you learn how accurate you are.
+            </quote></div>
+          </p>
+          <div style="margin-top: 1rem; text-align: right;">
+            <a href="#" id="wikiLink" target="_blank" rel="noopener noreferrer" class="wiki-button">
+              📖 View on Wiki
+            </a>
+          </div>
+        </div>
+
+      <div class="random-phrase-text">
+        <quote id="randomPhraseText"></quote>
+      </div>
+
+             <button class="random-button" onclick="showRandomPhrase()">
+         🎲 Get Different Phrase
+       </button>
+
+       <div class="all-phrases-section">
+         <div class="phrases-header">
+           <h3 style="color: #ffd700; margin: 2rem 0 1rem 0">All Possible Phrases</h3>
+           <button class="toggle-button" onclick="togglePhrases()" id="toggleButton">
+             Show All Phrases
+           </button>
+         </div>
+         <div class="phrases-grid" id="allPhrases" style="display: none;"></div>
+       </div>
+
+       </div>
+
+      <footer>
+        <p>Part of the <a href="https://arcane-scripts.net" target="_blank" rel="noopener noreferrer">Arcane Scripts</a> toolkit</p>
+      </footer>
+    </div>
+
+    <script>
+      const wikiLink = 'https://wiki.bloodontheclocktower.com/Amnesiac';
+      const phrases = [
+        {
+          text: "Each night*, guess a word. You learn if it was in the Wizard's wish.",
+        },
+      ];
+
+      function showRandomPhrase() {
+        const randomIndex = Math.floor(Math.random() * phrases.length);
+        const phrase = phrases[randomIndex];
+
+        document.getElementById('randomPhraseText').textContent = phrase.text;
+      }
+
+      // Show random phrase when page loads
+      document.addEventListener('DOMContentLoaded', function() {
+        showRandomPhrase();
+        showAllPhrases();
+        loadPhrasesVisibility();
+        setWikiLink();
+      });
+
+      function showAllPhrases() {
+        const phrasesGrid = document.getElementById('allPhrases');
+        const sortedPhrases = [...phrases]
+          .filter(phrase => phrase.text) // Only include phrases with text property
+          .sort((a, b) => a.text.localeCompare(b.text));
+        sortedPhrases.forEach(phrase => {
+          const phraseDiv = document.createElement('div');
+          phraseDiv.className = 'phrase-item';
+          phraseDiv.textContent = phrase.text;
+          phraseDiv.onclick = () => {
+            document.getElementById('randomPhraseText').textContent = phrase.text;
+          };
+          phrasesGrid.appendChild(phraseDiv);
+        });
+      }
+
+      function togglePhrases() {
+        const phrasesGrid = document.getElementById('allPhrases');
+        const toggleButton = document.getElementById('toggleButton');
+        const isVisible = phrasesGrid.style.display !== 'none';
+
+        if (isVisible) {
+          phrasesGrid.style.display = 'none';
+          toggleButton.textContent = 'Show All Phrases';
+          localStorage.setItem('phrasesVisible', 'false');
+        } else {
+          phrasesGrid.style.display = 'grid';
+          toggleButton.textContent = 'Hide All Phrases';
+          localStorage.setItem('phrasesVisible', 'true');
+        }
+      }
+
+      function loadPhrasesVisibility() {
+        const phrasesGrid = document.getElementById('allPhrases');
+        const toggleButton = document.getElementById('toggleButton');
+        const savedVisibility = localStorage.getItem('phrasesVisible');
+
+        if (savedVisibility === 'true') {
+          phrasesGrid.style.display = 'grid';
+          toggleButton.textContent = 'Hide All Phrases';
+        } else {
+          phrasesGrid.style.display = 'none';
+          toggleButton.textContent = 'Show All Phrases';
+        }
+      }
+
+      function setWikiLink() {
+        const wikiLinkElement = document.getElementById('wikiLink');
+        wikiLinkElement.href = wikiLink;
+      }
+
+      function copyPhrase(element) {
+        const phraseText = element.querySelector('.phrase-text').textContent;
+        const button = element.querySelector('.copy-button');
+
+        navigator.clipboard
+          .writeText(phraseText)
+          .then(() => {
+            button.textContent = 'Copied!';
+            button.classList.add('copied');
+
+            setTimeout(() => {
+              button.textContent = 'Copy';
+              button.classList.remove('copied');
+            }, 2000);
+          })
+          .catch((err) => {
+            console.error('Failed to copy: ', err);
+            button.textContent = 'Failed';
+            setTimeout(() => {
+              button.textContent = 'Copy';
+            }, 2000);
+          });
+      }
+    </script>
+  </body>
+</html>
