@@ -257,15 +257,16 @@ h1 {
 }
 
 div > quote {
-  display: inline;
+  display: block;
   font-style: italic;
   border-left: 2px solid #c0c0c0;
   color: #e8e8e8;
-  margin-left: 1rem;
+  margin-left: 0.5rem;
+  padding-left: 1rem;
 }
 
 div > quote::before {
-  margin-left: 0.5rem;
+  margin-left: 0.1rem;
   content: '"';
   color: #ffd700;
 }
