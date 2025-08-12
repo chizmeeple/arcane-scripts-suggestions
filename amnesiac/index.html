@@ -65,6 +65,8 @@
 
     <script>
       const wikiLink = 'https://wiki.bloodontheclocktower.com/Amnesiac';
+
+      // https://docs.google.com/spreadsheets/d/1k6lWtAKBFWTCq4vKLafn5L2kqPd5XA7CaMyR2RpHsAo/edit?gid=0#gid=0
       const phrases = [
         {
           text: "You start knowing 'Egg'. Non-Demon players who choose you with their ability will learn 'Egg' instead."
@@ -75,6 +77,57 @@
         {
           text: "Each night*, if someone was executed learn the alignment of the player who nominated them.",
         },
+        {
+          text: "Each night, choose a player. You learn how many steps they are from the nearest Minion/Demon/Evil player."
+        },
+        {
+          text: "Each night, choose a player. You learn how many living players are between yourself and the nearest Minion/Demon/Evil player."
+        },
+        {
+          text: "Each night, pick a player, you learn if one of their alive neighbours is a Demon."
+        },
+        {
+          text: "You start knowing two players of opposite alignments. Each night*, if one of them dies, you learn a new living player of their alignment."
+        },
+        {
+          text: "Each night, pick a player, you learn if one of their alive neighbours is a Demon."
+        },
+        {
+          text: "Each night*, learn a not in play Townsfolk.",
+        },
+        {
+          text: "Each night*, learn a not in play character.",
+        },
+        {
+          text: "Each night*, learn one of the characters shown as Demon/Minion bluffs.",
+        },
+        {
+          text: "Each night*, learn one in play character."
+        },
+        {
+          text: "Each night, choose a player. Learn the number of steps from them to the nearest player of matching character type.",
+        },
+        {
+          text: "Each night, if at least one of your living neighbours wakes up, you wake up with exactly one of them.",
+        },
+        {
+          text: "Each night, choose a player. The chosen player chooses a player. The chosen player learns if that player has any Evil living neighbours."
+        },
+        {
+          text: "Each night*, you learn if the player executed yesterday and the player who nominated them are the same alignment.",
+        },
+        {
+          text: "Each night, choose a player. You learn how many players in a row, starting from them, have the same character type.",
+        },
+        {
+          text: "Each night*, choose a player. You learn whether they have the same alignment as the last executed player.",
+        },
+        {
+          text: "Each night, choose a number. You learn the letter in that position from the first name of an Evil player chosen by the Storyteller. If the number is greater than the length of the longest applicable name, you learn nothing."
+        },
+        {
+          text: "Each night, choose a player. You become their alignment."
+        }
       ];
 
       function showRandomPhrase() {
