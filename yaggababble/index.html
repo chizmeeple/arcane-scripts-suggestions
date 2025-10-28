@@ -39,6 +39,7 @@
 
       <div class="random-phrase-text">
         <quote id="randomPhraseText"></quote>
+        <span class="display-icon" id="randomDisplayIcon" onclick="showPhraseOverlay()" onkeydown="if(event.key==='Enter'||event.key===' ') {event.preventDefault(); showPhraseOverlay();}" role="button" tabindex="0" style="display: none;">⛶</span>
       </div>
 
              <button class="random-button" onclick="showRandomPhrase()">
@@ -60,6 +61,21 @@
       <footer>
         <p>Part of the <a href="https://arcane-scripts.net" target="_blank" rel="noopener noreferrer">Arcane Scripts</a> toolkit</p>
       </footer>
+    </div>
+
+    <!-- Full-screen overlay modal -->
+    <div id="phraseOverlay" class="phrase-overlay" style="display: none;">
+      <div class="overlay-content">
+        <div class="overlay-header">
+          <h2>Your Phrase Is:</h2>
+          <button class="close-button" onclick="hidePhraseOverlay()">×</button>
+        </div>
+        <div class="phrase-display">
+          <div id="overlayPhraseText" class="big-phrase"></div>
+        </div>
+        <div class="overlay-footer">
+        </div>
+      </div>
     </div>
 
     <script>
@@ -156,6 +172,8 @@
         const phrase = phrases[randomIndex];
 
         document.getElementById('randomPhraseText').textContent = phrase.text;
+        // Show the display icon when a phrase is shown
+        document.getElementById('randomDisplayIcon').style.display = 'inline-block';
       }
 
       // Show random phrase when page loads
@@ -171,15 +189,16 @@
         const sortedPhrases = [...phrases]
           .filter(phrase => phrase.text) // Only include phrases with text property
           .sort((a, b) => a.text.localeCompare(b.text));
-        sortedPhrases.forEach(phrase => {
+        for (const phrase of sortedPhrases) {
           const phraseDiv = document.createElement('div');
           phraseDiv.className = 'phrase-item';
           phraseDiv.textContent = phrase.text;
           phraseDiv.onclick = () => {
             document.getElementById('randomPhraseText').textContent = phrase.text;
+            document.getElementById('randomDisplayIcon').style.display = 'inline-block';
           };
           phrasesGrid.appendChild(phraseDiv);
-        });
+        }
       }
 
       function togglePhrases() {
@@ -240,6 +259,40 @@
             }, 2000);
           });
       }
+
+      // Overlay functions
+      function showPhraseOverlay(phraseText = null) {
+        const overlay = document.getElementById('phraseOverlay');
+        const overlayPhraseText = document.getElementById('overlayPhraseText');
+
+        // Use provided phrase text or get from random phrase display
+        const textToShow = phraseText || document.getElementById('randomPhraseText').textContent;
+        overlayPhraseText.textContent = textToShow;
+
+        overlay.style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+      }
+
+      function hidePhraseOverlay() {
+        const overlay = document.getElementById('phraseOverlay');
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }
+
+      // Close overlay when clicking outside the content
+      document.addEventListener('click', function(e) {
+        const overlay = document.getElementById('phraseOverlay');
+        if (e.target === overlay) {
+          hidePhraseOverlay();
+        }
+      });
+
+      // Close overlay with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          hidePhraseOverlay();
+        }
+      });
     </script>
   </body>
 </html>
